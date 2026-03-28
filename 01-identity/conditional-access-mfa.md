@@ -2,7 +2,7 @@
 
 **Date:** March 2026  
 **Service:** Microsoft Entra ID — Conditional Access (P2)  
-**Cert topic:** AZ-500: Manage identity and access
+****Cert topic**: Manage identity and access
 
 ---
 
@@ -54,17 +54,6 @@ This is a production best practice, not optional.
 - Conditional Access policies are evaluated at sign-in time, not at account creation
 - Report-only mode lets you test policy impact before enforcing — useful in production before enabling
 - Admin exclusion from CA policies must be paired with strong password + monitoring to avoid becoming a security gap
-
----
-
-## Interview question this answers
-
-> "How would you enforce MFA for all users in an organisation using Entra ID?"
-
-Answer: Create a Conditional Access policy targeting All users and All cloud apps,
-with Grant control set to Require MFA. Exclude break-glass accounts.
-Start in Report-only mode to assess impact, then switch to On.
-
 ---
 
 ## Screenshots
