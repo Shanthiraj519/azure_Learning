@@ -58,4 +58,5 @@ This is a production best practice, not optional.
 
 ## Screenshots
 
-![Conditional Access policy list showing State: On](./screenshots/ca-mfa-policy-enabled.png)
+<img width="939" height="431" alt="image" src="https://github.com/user-attachments/assets/ba2cd60e-d83a-419a-bcf8-8821d2f29084" />
+
