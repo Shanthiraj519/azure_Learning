@@ -1,7 +1,6 @@
 # Lab 01 — Manage Microsoft Entra ID Users
 
-**Domain:** Identity & Governance | **Exam weight:** 20–25%
-**Difficulty:** Easy | **Duration:** ~30 min | **Cost:** Free
+**Domain:** Identity & Governance 
 
 ## Overview
 Managed Microsoft Entra ID user accounts using Azure Portal and Azure CLI.
@@ -40,7 +39,7 @@ az ad user delete --id "lab01cli@tenant.onmicrosoft.com"
 ## Screenshots
 | Step | Screenshot |
 |------|-----------|
-| Portal user created |  |
+| Portal user created | 
 | CLI user created | ![cli-user](./screenshots/02-cli-user.png) |
 | Deleted users blade | ![deleted](./screenshots/03-deleted-user.png) |
 
