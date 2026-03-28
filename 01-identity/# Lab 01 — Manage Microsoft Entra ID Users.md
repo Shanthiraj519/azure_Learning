@@ -41,7 +41,8 @@ az ad user delete --id "lab01cli@tenant.onmicrosoft.com"
 |------|-----------|
 | Portal user created | <img width="938" height="394" alt="image" src="https://github.com/user-attachments/assets/b36d4074-b2b6-4cb5-9748-322997feb2a8" />
 
-| CLI user created | ![cli-user](./screenshots/02-cli-user.png) |
+| CLI user created | <img width="959" height="218" alt="image" src="https://github.com/user-attachments/assets/16acc551-8ea0-43a7-a4f4-783c0f0938a1" />
+|
 | Deleted users blade | ![deleted](./screenshots/03-deleted-user.png) |
 
 ---
