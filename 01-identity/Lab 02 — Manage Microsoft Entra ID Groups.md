@@ -1,5 +1,5 @@
 # Lab 02 — Manage Microsoft Entra ID Groups
-**Domain:** Identity & Governance 
+**Domain:** Identity & Governance
 
 ## Overview
 Managed Microsoft Entra ID groups using the Azure Portal. Covered creation of
