@@ -15,7 +15,7 @@ networking, compute, security, and automation.
 | Area | Topics covered | Status |
 |------|---------------|--------|
 | [01 — Identity](./01-identity/) | Entra ID, RBAC, Conditional Access, PIM, Identity Protection | Active |
-| [02 — Networking](./02-networking/) | VNet, NSG, VNet Peering | Active |
+| [02 — Networking](./02 - networking/) | VNet, NSG, VNet Peering | Active |
 | [03 — Compute](./03-compute/) | Linux VM, Managed Identity, Key Vault access | Active |
 | [04 — Security](./04-security/) | Defender for Cloud, Key Vault, Secure Score | Active |
 | [05 — Automation](./05-automation/) | PowerShell, Azure Policy, bulk provisioning | Active |
