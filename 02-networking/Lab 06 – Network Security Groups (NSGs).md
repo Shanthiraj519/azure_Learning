@@ -57,12 +57,18 @@ Create and configure Network Security Groups (NSGs) to control inbound and outbo
 
 | # | File Name | What to Capture | Where in Portal |
 |---|-----------|-----------------|-----------------|
-| 1 |  | nsg-lab-web overview page showing Name, Resource Group (rg-lab-networking), Location (Central india), and Subscription | Network Security Groups > nsg-lab-web > Overview |
-| 2 | `02-nsg-web-inbound-rules.png` | Inbound security rules list showing all 3 rules — Allow-SSH-Inbound (100), Allow-HTTP-Inbound (110), Deny-All-Inbound-Custom (4000) with Priority, Port, and Action columns visible | nsg-lab-web > Inbound security rules |
-| 3 | `03-nsg-web-subnet-association.png` | Subnets blade showing nsg-lab-web is associated with vnet-lab-centralindia / web-subnet | nsg-lab-web > Subnets |
-| 4 | `04-nsg-lab-db-created.png` | nsg-lab-db overview page showing Name, Resource Group (rg-lab-networking), Location (centralindia), and Subscription | Network Security Groups > nsg-lab-db > Overview |
-| 5 | `05-nsg-db-inbound-rules.png` | Inbound security rules list showing Allow-MySQL-From-WebSubnet (100, source 10.0.1.0/24, port 3306) and Deny-All-To-DB (4000) | nsg-lab-db > Inbound security rules |
-| 6 | `06-nsg-db-subnet-association.png` | Subnets blade showing nsg-lab-db is associated with vnet-lab-eastus / db-subnet | nsg-lab-db > Subnets |
+| 1 | <img width="1331" height="598" alt="image" src="https://github.com/user-attachments/assets/ba4c806c-fd92-423b-98dd-ab29f31e4cbf" />
+ | nsg-lab-web overview page showing Name, Resource Group (rg-lab-networking), Location (Central india), and Subscription | Network Security Groups > nsg-lab-web > Overview |
+| 2 | `<img width="1303" height="475" alt="image" src="https://github.com/user-attachments/assets/00602b40-fe48-4956-81f9-d548d6c64341" />
+ | Inbound security rules list showing all 3 rules — Allow-SSH-Inbound (1000), Allow-HTTP-Inbound (1010), Deny-All-Inbound-Custom (4000) with Priority, Port, and Action columns visible | nsg-lab-web > Inbound security rules |
+| 3 | <img width="1354" height="303" alt="image" src="https://github.com/user-attachments/assets/6a09a2b4-2432-4311-b80f-a71ba5f6fca5" />
+ | Subnets blade showing nsg-lab-web is associated with vnet-lab-centralindia / web-subnet | nsg-lab-web > Subnets |
+| 4 | <img width="1333" height="322" alt="image" src="https://github.com/user-attachments/assets/dbcbe4b3-e2eb-4678-b574-0a3ce71d669a" />
+ | nsg-lab-db overview page showing Name, Resource Group (rg-lab-networking), Location (centralindia), and Subscription | Network Security Groups > nsg-lab-db > Overview |
+| 5 | <img width="1365" height="475" alt="image" src="https://github.com/user-attachments/assets/0b8e7659-47d2-45b4-86e6-031039e424da" />
+| Inbound security rules list showing Allow-MySQL-From-WebSubnet (100, source 10.0.1.0/24, port 3306) and Deny-All-To-DB (4000) | nsg-lab-db > Inbound security rules |
+| 6 | <img width="1360" height="332" alt="image" src="https://github.com/user-attachments/assets/4e08ecb5-9c21-450a-b939-9b114581d7e3" />
+ | Subnets blade showing nsg-lab-db is associated with vnet-lab-eastus / db-subnet | nsg-lab-db > Subnets |
 | 7 | `07-vnet-subnet-nsg-mapping.png` | VNet subnets list showing both web-subnet and db-subnet with their respective NSGs (nsg-lab-web and nsg-lab-db) visible in the NSG column | Virtual Networks > vnet-lab-eastus > Subnets |
 | 8 | `08-effective-security-rules.png` | Effective security rules page showing combined inbound rules applied to vm-lab-linux-01 NIC — all 3 custom rules + default rules visible | VM > vm-lab-linux-01 > Networking > NIC > Effective security rules |
 | 9 | `09-ip-flow-verify-allowed.png` | IP Flow Verify result showing Access allowed for port 22 (SSH) inbound — rule name Allow-SSH-Inbound visible in result | Network Watcher > IP flow verify > result screen |
