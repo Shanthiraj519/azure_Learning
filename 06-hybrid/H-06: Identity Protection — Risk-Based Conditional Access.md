@@ -86,8 +86,13 @@ of managing risk policies through Conditional Access.
 ## Screenshots
 | Step | Description |
 |------|-------------|
-| ![Legacy Blade](screenshots/h07-legacy-blade.png) | Identity Protection legacy blade showing retirement notice |
-| ![CA-02 Users](screenshots/h07-ca02-users.png) | CA-02 policy — users included and Global Admin excluded |
-| ![Conditions](screenshots/h07-conditions.png) | Sign-in risk and user risk conditions configured |
-| ![Grant](screenshots/h07-grant.png) | Grant control — Require MFA configured |
-| ![Policy On](screenshots/h07-policy-on.png) | CA-02 enabled and saved |
+| ![Legacy Blade]<img width="959" height="407" alt="image" src="https://github.com/user-attachments/assets/d6cb9a5c-e574-457b-be12-59e9ccaa79e4" />
+) | Identity Protection legacy blade showing retirement notice |
+| ![CA-02 Users]<img width="1512" height="784" alt="image" src="https://github.com/user-attachments/assets/d0d5340c-91c2-40e5-9768-63503b2b81dd" />
+ | CA-02 policy — users included and Global Admin excluded |
+| ![Conditions]<img width="1568" height="728" alt="image" src="https://github.com/user-attachments/assets/30167c86-11d0-4652-a473-62723d7518ce" />
+ | Sign-in risk and user risk conditions configured |
+| ![Grant]<img width="1568" height="692" alt="image" src="https://github.com/user-attachments/assets/0674b8a4-e41a-4fe2-8f48-48c18e162b08" />
+ | Grant control — Require MFA configured |
+| ![Policy On]<img width="1568" height="692" alt="image" src="https://github.com/user-attachments/assets/75f7c223-f125-480d-b978-0979319ea149" />
+| CA-02 enabled and saved |
