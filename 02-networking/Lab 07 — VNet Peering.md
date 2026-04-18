@@ -1,7 +1,7 @@
-<img width="918" height="799" alt="image" src="https://github.com/user-attachments/assets/fceacb3c-90f3-4ec2-adae-621ca3ab762d" /># Lab 07 — VNet Peering —
+# Lab 07 — VNet Peering —
 
 Hands-on lab configuring bidirectional VNet peering between two Azure virtual
-networks across different regions using the Azure portal.
+networks across different regions using the Azure portal
 
 ---
 
