@@ -1,14 +1,27 @@
-# Lab 06 – Network Security Groups (NSGs)
+# Lab 06 – Network Security Groups (NSGs) — 
 
-**Domain:** 2 – Networking  
- 
-**Environment:** Shanthi's_Lab | East US | shanthislab@outlook.com
+Hands-on lab creating and configuring Network Security Groups to control
+inbound and outbound traffic to Azure subnets using priority-based rules.
+
+---
+
+## Environment
+
+| Component | Details |
+|-----------|---------|
+| Subscription | Shanthi's_Lab |
+| Resource Group | rg-lab-networking |
+| Region | Central India |
+| VNet | vnet-lab-centralindia — 10.0.0.0/16 |
+| Web Subnet | web-subnet — 10.0.1.0/24 |
+| DB Subnet | db-subnet — 10.0.2.0/24 |
 
 ---
 
 ## Objective
 
-Create and configure Network Security Groups (NSGs) to control inbound and outbound traffic to Azure subnets and VMs using priority-based security rules.
+Create and configure Network Security Groups (NSGs) to control inbound and
+outbound traffic to Azure subnets and VMs using priority-based security rules.
 
 ---
 
@@ -40,36 +53,76 @@ Create and configure Network Security Groups (NSGs) to control inbound and outbo
 
 ---
 
-## Tasks Completed
+## Steps
 
-- [x] Created nsg-lab-web and added inbound rules (SSH, HTTP, Deny All)
-- [x] Associated nsg-lab-web with web-subnet
-- [x] Created nsg-lab-db with restricted MySQL access from web-subnet only
-- [x] Associated nsg-lab-db with db-subnet
-- [x] Verified Effective Security Rules on vm-lab-linux-01
-- [x] Tested rules using IP Flow Verify in Network Watcher
+1. Navigated to **Network Security Groups** in the Azure portal and clicked **+ Create**.
+2. Created `nsg-lab-web` in resource group `rg-lab-networking`, region Central India.
+3. Added inbound rules: Allow-SSH-Inbound (port 22), Allow-HTTP-Inbound (port 80), Deny-All-Inbound-Custom (port *, priority 4000).
+4. Associated `nsg-lab-web` with `web-subnet` under `vnet-lab-centralindia`.
+5. Created `nsg-lab-db` in the same resource group and region.
+6. Added inbound rules: Allow-MySQL-From-WebSubnet (port 3306, source 10.0.1.0/24), Deny-All-To-DB (port *, priority 4000).
+7. Associated `nsg-lab-db` with `db-subnet` under `vnet-lab-centralindia`.
+8. Verified **Effective Security Rules** on `vm-lab-linux-01` NIC — confirmed all custom rules appear alongside Azure default rules.
+9. Used **IP Flow Verify** in Network Watcher to confirm port 22 is allowed and port 8080 is denied.
+
+---
+
+## Key Concepts
+
+**Network Security Group (NSG)** is a firewall layer in Azure that contains
+inbound and outbound security rules. Rules are evaluated by priority —
+lowest number wins. Azure also injects default rules (65000, 65001, 65500)
+that cannot be deleted but can be overridden with lower priority rules.
+
+**NSGs are stateful** — if inbound traffic is allowed, the return outbound
+traffic is automatically permitted without needing a separate outbound rule.
+
+**Subnet vs NIC association** — an NSG can be associated at the subnet level
+(applies to all VMs in the subnet) or at the NIC level (applies to a single VM).
+Both can be applied simultaneously; traffic must pass both.
+
+**Priority-based evaluation** — rules are processed from lowest to highest
+number. Once a rule matches, processing stops. The explicit Deny-All at
+priority 4000 ensures any traffic not matched by earlier Allow rules is blocked.
+
+**IP Flow Verify** — a Network Watcher tool that tests whether a specific
+traffic flow (source IP, destination IP, port, protocol, direction) would be
+allowed or denied by the NSG, and identifies which rule made the decision.
+
+**Effective Security Rules** — shows the combined set of rules applied to a
+NIC, merging subnet-level and NIC-level NSG rules, including Azure defaults.
+
+---
+
+## Learnings
+
+- NSG rules are stateful — allowing inbound SSH on port 22 automatically
+  permits the return traffic without a separate outbound rule.
+- Priority 4000 for the Deny-All rule leaves room to insert future Allow rules
+  at priorities 200–3999 without renumbering existing rules.
+- Restricting the DB subnet to only accept MySQL traffic from the web subnet
+  CIDR (10.0.1.0/24) demonstrates micro-segmentation — a core security pattern.
+- Effective Security Rules is the fastest way to confirm which rules are
+  actually applied to a VM, especially when both subnet and NIC NSGs are in use.
+- IP Flow Verify saves time during troubleshooting by pinpointing exactly
+  which rule is blocking or allowing a specific flow.
+- Azure default rules (AllowVNetInBound, AllowAzureLoadBalancerInBound,
+  DenyAllInBound) are always present and cannot be deleted — custom rules
+  override them by using lower priority numbers.
 
 ---
 
 ## Screenshots
 
-> Take all screenshots in the Azure Portal. Upload them to the `screenshots/` folder inside `lab-06-nsg/`.
-
-| # | File Name | What to Capture | Where in Portal |
-|---|-----------|-----------------|-----------------|
-| 1 | <img width="1331" height="598" alt="image" src="https://github.com/user-attachments/assets/ba4c806c-fd92-423b-98dd-ab29f31e4cbf" />
- | nsg-lab-web overview page showing Name, Resource Group (rg-lab-networking), Location (Central india), and Subscription | Network Security Groups > nsg-lab-web > Overview |
-| 2 | `<img width="1303" height="475" alt="image" src="https://github.com/user-attachments/assets/00602b40-fe48-4956-81f9-d548d6c64341" />
- | Inbound security rules list showing all 3 rules — Allow-SSH-Inbound (1000), Allow-HTTP-Inbound (1010), Deny-All-Inbound-Custom (4000) with Priority, Port, and Action columns visible | nsg-lab-web > Inbound security rules |
-| 3 | <img width="1354" height="303" alt="image" src="https://github.com/user-attachments/assets/6a09a2b4-2432-4311-b80f-a71ba5f6fca5" />
- | Subnets blade showing nsg-lab-web is associated with vnet-lab-centralindia / web-subnet | nsg-lab-web > Subnets |
-| 4 | <img width="1333" height="322" alt="image" src="https://github.com/user-attachments/assets/dbcbe4b3-e2eb-4678-b574-0a3ce71d669a" />
- | nsg-lab-db overview page showing Name, Resource Group (rg-lab-networking), Location (centralindia), and Subscription | Network Security Groups > nsg-lab-db > Overview |
-| 5 | <img width="1365" height="475" alt="image" src="https://github.com/user-attachments/assets/0b8e7659-47d2-45b4-86e6-031039e424da" />
-| Inbound security rules list showing Allow-MySQL-From-WebSubnet (100, source 10.0.1.0/24, port 3306) and Deny-All-To-DB (4000) | nsg-lab-db > Inbound security rules |
-| 6 | <img width="1360" height="332" alt="image" src="https://github.com/user-attachments/assets/4e08ecb5-9c21-450a-b939-9b114581d7e3" />
- | Subnets blade showing nsg-lab-db is associated with vnet-lab-eastus / db-subnet | nsg-lab-db > Subnets |
-| 7 | `07-vnet-subnet-nsg-mapping.png` | VNet subnets list showing both web-subnet and db-subnet with their respective NSGs (nsg-lab-web and nsg-lab-db) visible in the NSG column | Virtual Networks > vnet-lab-eastus > Subnets |
-| 8 | `08-effective-security-rules.png` | Effective security rules page showing combined inbound rules applied to vm-lab-linux-01 NIC — all 3 custom rules + default rules visible | VM > vm-lab-linux-01 > Networking > NIC > Effective security rules |
-| 9 | `09-ip-flow-verify-allowed.png` | IP Flow Verify result showing Access allowed for port 22 (SSH) inbound — rule name Allow-SSH-Inbound visible in result | Network Watcher > IP flow verify > result screen |
-| 10 | `10-ip-flow-verify-denied.png` | IP Flow Verify result showing Access denied for port 8080 inbound — rule name Deny-All-Inbound-Custom visible in result | Network Watcher > IP flow verify > result screen |
+| # | File Name | Description |
+|---|-----------|-------------|
+| 01 | 01-nsg-web-overview.png | nsg-lab-web overview — Name, Resource Group, Location, Subscription |
+| 02 | 02-nsg-web-inbound-rules.png | Inbound rules showing Allow-SSH (100), Allow-HTTP (110), Deny-All (4000) |
+| 03 | 03-nsg-web-subnet-association.png | Subnets blade showing nsg-lab-web associated with web-subnet |
+| 04 | 04-nsg-db-overview.png | nsg-lab-db overview — Name, Resource Group, Location, Subscription |
+| 05 | 05-nsg-db-inbound-rules.png | Inbound rules showing Allow-MySQL-From-WebSubnet (100) and Deny-All-To-DB (4000) |
+| 06 | 06-nsg-db-subnet-association.png | Subnets blade showing nsg-lab-db associated with db-subnet |
+| 07 | 07-vnet-subnet-nsg-mapping.png | VNet subnets list showing both subnets with their NSGs in the NSG column |
+| 08 | 08-effective-security-rules.png | Effective security rules on vm-lab-linux-01 NIC — custom + default rules visible |
+| 09 | 09-ip-flow-verify-allowed.png | IP Flow Verify — port 22 allowed, rule Allow-SSH-Inbound shown in result |
+| 10 | 10-ip-flow-verify-denied.png | IP Flow Verify — port 8080 denied, rule Deny-All-Inbound-Custom shown in result |
