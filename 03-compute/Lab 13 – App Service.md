@@ -116,8 +116,12 @@ Since deployment slots require Standard tier or above and this lab uses a free s
 
 | Screenshot | Description |
 |---|---|
-| `screenshots/lab13-01-appservice-overview.png` | Web App Overview showing URL and status |
-| `screenshots/lab13-02-deployment-center.png` | Deployment Center with External Git configured |
-| `screenshots/lab13-03-env-variables.png` | Environment variables configured |
+|<img width="1451" height="797" alt="image" src="https://github.com/user-attachments/assets/856fc6ae-c1ed-4a1d-a0da-aef099583032" />
+` | Web App Overview showing URL and status |
+| <img width="1436" height="785" alt="image" src="https://github.com/user-attachments/assets/baeb7d21-66ec-4d7d-afcd-6b31b39757db" />
+ | Deployment Center with External Git configured |
+|<img width="1459" height="800" alt="image" src="https://github.com/user-attachments/assets/1d7db8bc-2421-4e55-8d3e-f56fef945c44" />
+` | Environment variables configured |
 | `screenshots/lab13-04-appservice-logs.png` | App Service logs settings (File System, 7 days) |
-| `screenshots/lab13-05-log-stream.png` | Live Log Stream showing Connected and Node.js runtime |
+| `<img width="1460" height="807" alt="image" src="https://github.com/user-attachments/assets/744e333c-8199-45f5-ac35-90dfdee591c3" />
+ | Live Log Stream showing Connected and Node.js runtime |
